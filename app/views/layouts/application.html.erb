@@ -1,16 +1,28 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Bookgem</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
+<head>
+  <title>BookGem</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-    <%= javascript_importmap_tags %>
-  </head>
+  <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+  <%= javascript_importmap_tags %>
+</head>
+<body>
+<nav class="nav">
+  <!-- Only the div inside the anchor is changed, rest remains the same -->
+  <a href="http://localhost:3000/">
+    <div class="nav-brand">📚 BookGem</div>
+  </a>
+  <% if controller_name == 'pages' && action_name == 'home' %>
+    <div class="nav-links">
+      <%= link_to "Log In", "#", class: "btn btn-secondary" %>
+      <%= link_to "Sign Up", "#", class: "btn btn-primary" %>
+    </div>
+  <% end %>
+</nav>
 
-  <body>
-    <%= yield %>
-  </body>
+<%= yield %>
+</body>
 </html>

@@ -1,2 +1,26 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<div class="hero">
+  <h1>Borrow Rare Books from Local Collectors</h1>
+  <p>Access unique and rare books from private collections in your area</p>
+  <div>
+    <%= link_to "Browse Books", books_path, class: "btn btn-primary" %>
+    <%= link_to "List Your Books", new_book_path, class: "btn btn-secondary" %>
+  </div>
+</div>
+
+<div class="features">
+  <div class="feature">
+    <div class="emoji">📖</div>
+    <h3>Rare Collections</h3>
+    <p>Access first editions and rare books from private collectors</p>
+  </div>
+  <div class="feature">
+    <div class="emoji">🤝</div>
+    <h3>Secure Borrowing</h3>
+    <p>Safe and verified borrowing process</p>
+  </div>
+  <div class="feature">
+    <div class="emoji">📍</div>
+    <h3>Local Community</h3>
+    <p>Connect with book lovers in your area</p>
+  </div>
+</div>
