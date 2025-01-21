@@ -1,6 +1,11 @@
 require "test_helper"
 
 class BooksControllerTest < ActionDispatch::IntegrationTest
+<<<<<<< HEAD
+  # test "the truth" do
+  #   assert true
+  # end
+=======
   test "should get index" do
     get books_index_url
     assert_response :success
@@ -20,4 +25,5 @@ class BooksControllerTest < ActionDispatch::IntegrationTest
     get books_create_url
     assert_response :success
   end
+>>>>>>> origin/master
 end
