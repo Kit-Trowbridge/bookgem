@@ -3,4 +3,3 @@ class LoansController < ApplicationController
     @loans = Loan.all
   end
 end
-

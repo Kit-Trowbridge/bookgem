@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2025_01_21_143301) do
+ActiveRecord::Schema[7.1].define(version: 2025_01_21_180116) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -19,6 +19,7 @@ ActiveRecord::Schema[7.1].define(version: 2025_01_21_143301) do
     t.string "author"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "category"
   end
 
   create_table "borrowers", force: :cascade do |t|
@@ -30,15 +31,24 @@ ActiveRecord::Schema[7.1].define(version: 2025_01_21_143301) do
 
   create_table "loans", force: :cascade do |t|
     t.bigint "book_id", null: false
-    t.bigint "borrower_id", null: false
+    t.bigint "user_id", null: false
     t.date "start_date"
     t.date "end_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["book_id"], name: "index_loans_on_book_id"
-    t.index ["borrower_id"], name: "index_loans_on_borrower_id"
+    t.index ["user_id"], name: "index_loans_on_user_id"
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "name"
+    t.string "email", null: false
+    t.string "password_digest"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["email"], name: "index_users_on_email", unique: true
   end
 
   add_foreign_key "loans", "books"
-  add_foreign_key "loans", "borrowers"
+  add_foreign_key "loans", "users"
 end
