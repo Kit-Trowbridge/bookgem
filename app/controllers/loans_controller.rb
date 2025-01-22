@@ -5,16 +5,15 @@ class LoansController < ApplicationController
 
   def new
     @loan = Loan.new
+    @book = Book.find(params[:book_id])
   end
 
   def create
-    @users = User.all
     @book = Book.find(params[:book_id])
     @loan = Loan.new(loan_params)
-    @loan.book = @car
+    @loan.book = @book
     if @loan.save
-      # need this even though it doesn't bring to new page
-      redirect_to book_loans_path(@book)
+      redirect_to loans_path
     else
       render :new, status: :unprocessable_entity
     end
