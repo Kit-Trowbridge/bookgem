@@ -3,6 +3,7 @@
 <div class="book-details">
   <p><strong>Author:</strong> <%= @book.author %></p>
   <p><strong>Category:</strong> <%= @book.category %></p>
+  <p><strong>Price:</strong> $<%= @book.price %></p>
 </div>
 
 <%= link_to "Back to Books", books_path, class: "btn btn-secondary mt-3" %>

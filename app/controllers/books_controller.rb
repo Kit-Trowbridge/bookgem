@@ -11,15 +11,19 @@ class BooksController < ApplicationController
 
   def new
     @book = Book.new
+    @users = User.all
   end
 
   def create
     @book = Book.new(book_params)
+    # @book.user = current_user
 
     if @book.save
-      redirect_to book_path(@book), notice: "Book successfully listed!"
+      redirect_to books_path, notice: "Book successfully listed!"
     else
-      render :new, alert: "Error listing the book."
+      @users = User.all
+      flash.now[:alert] = "There was an error listing the book."
+      render :new
     end
   end
 
@@ -27,6 +31,6 @@ class BooksController < ApplicationController
 
   def book_params
     # Permit only the allowed parameters
-    params.require(:book).permit(:title, :author, :category)
+    params.require(:book).permit(:title, :author, :category, :price, :user_id)
   end
 end
