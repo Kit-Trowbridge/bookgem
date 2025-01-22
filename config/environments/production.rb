@@ -71,6 +71,8 @@ Rails.application.configure do
   # config.active_job.queue_adapter = :resque
   # config.active_job.queue_name_prefix = "bookgem_production"
 
+  config.action_mailer.default_url_options = { host: 'https://bookgem-kit-trowbridge-aa4c7a56c197.herokuapp.com/' }
+
   config.action_mailer.perform_caching = false
 
   # Ignore bad email addresses and do not raise email delivery errors.
