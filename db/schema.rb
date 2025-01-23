@@ -47,7 +47,7 @@ ActiveRecord::Schema[7.1].define(version: 2025_01_23_132808) do
     t.string "author"
     t.float "price"
     t.string "category"
-    t.bigint "user_id", null: false
+    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_books_on_user_id"

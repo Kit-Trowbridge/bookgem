@@ -31,6 +31,6 @@ class BooksController < ApplicationController
 
   def book_params
     # Permit only the allowed parameters
-    params.require(:book).permit(:title, :author, :category, :price, :user_id)
+    params.require(:book).permit(:title, :author, :category, :price, :user_id, :photo)
   end
 end
