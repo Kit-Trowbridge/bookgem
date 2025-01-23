@@ -1,11 +1,16 @@
 <div class="container">
   <h1><%= current_user.name.capitalize %>'s Loans</h1>
-  <ul>
-    <% @loans.each do |loan| %>
-      <li><%= loan.book.title %> | Due: <%= loan.end_date.strftime("%b %d, %Y") %></li>
-      <br>
-    <% end %>
-  </ul>
 
-  <!--Need back to all books button-->
+  <% if @loans.empty? %>
+    <p><em>You don't have any books on loan currently :(</em></p>
+  <% else %>
+    <ul>
+      <% @loans.each do |loan| %>
+        <li><%= loan.book.title %> | Due: <%= loan.end_date.strftime("%b %d, %Y") %></li>
+        <br>
+      <% end %>
+    </ul>
+  <% end %>
+
+  <%= link_to "Back to All Books", books_path, class: "btn btn-secondary mt-3" %>
 </div>
