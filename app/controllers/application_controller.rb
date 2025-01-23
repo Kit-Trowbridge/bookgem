@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
   before_action :authenticate_user!
 
+  # Because we added name to the user table, we have to manually permit this field
   before_action :configure_permitted_parameters, if: :devise_controller?
 
   def configure_permitted_parameters
