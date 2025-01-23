@@ -1,7 +1,11 @@
-<h1>Loans</h1>
-<ul>
-  <% @loans.each do |loan| %>
-    <li><%= loan.book.title %> | Due: <%= loan.end_date.strftime("%b %d, %Y") %></li>
-    <br>
-  <% end %>
-</ul>
+<div class="container">
+  <h1>Loans</h1>
+  <ul>
+    <% @loans.each do |loan| %>
+      <li><%= loan.book.title %> | Due: <%= loan.end_date.strftime("%b %d, %Y") %></li>
+      <br>
+    <% end %>
+  </ul>
+
+  <!--Need back to all books button-->
+</div>
