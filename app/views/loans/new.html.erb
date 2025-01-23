@@ -1,7 +1,9 @@
-<%= simple_form_for [@book, @loan] do |f| %>
-  <!--Need to use datepickr -->
-  <%= f.input :start_date %>
-  <%= f.input :end_date %>
-  <%= f.association :user %>
-  <%= f.submit 'Borrow this book', class: "button" %>
-<% end %>
+<div class="container">
+  <%= simple_form_for [@book, @loan] do |f| %>
+    <!--Need to use datepickr -->
+    <%= f.input :start_date %>
+    <%= f.input :end_date %>
+    <%= f.association :user %>
+    <%= f.submit 'Borrow this book', class: "button" %>
+  <% end %>
+</div>
