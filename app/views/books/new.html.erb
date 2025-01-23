@@ -22,7 +22,9 @@
 
         <%= form.input :category, label: "Category", collection: ["Fiction", "Non-Fiction", "Science", "History", "Other"], as: :select, include_blank: "Select a category" %>
 
-        <%= form.input :price, label: "Price", placeholder: "Enter the price" %>
+        <%= form.input :price, label: "Deposit price", placeholder: "Enter the price" %>
+
+        <%= form.input :photo, as: :file, label: "Photo" %>
 
         <%= form.button :submit, "List Book", class: "btn btn-primary" %>
     <% end %>
