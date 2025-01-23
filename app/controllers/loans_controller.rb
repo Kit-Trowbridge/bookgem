@@ -2,7 +2,7 @@ class LoansController < ApplicationController
   before_action :set_book, only: [:new, :create]
 
   def index
-    @loans = Loan.all
+    @loans = current_user.loans
   end
 
   def new

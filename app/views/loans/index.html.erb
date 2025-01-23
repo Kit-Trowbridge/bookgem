@@ -1,5 +1,5 @@
 <div class="container">
-  <h1>Loans</h1>
+  <h1><%= current_user.name.capitalize %>'s Loans</h1>
   <ul>
     <% @loans.each do |loan| %>
       <li><%= loan.book.title %> | Due: <%= loan.end_date.strftime("%b %d, %Y") %></li>
