@@ -28,6 +28,18 @@
       color: #2563eb; // Primary color
     }
 
+    user-info {
+      text-align: center;
+      font-size: 14px;
+      color: #4b5563; // Gray text
+      margin-bottom: 20px;
+      font-weight: bold;
+
+      strong {
+        color: #2563eb; // Primary color for user name
+      }
+    }
+
     .form-group {
       margin-bottom: 20px;
 
