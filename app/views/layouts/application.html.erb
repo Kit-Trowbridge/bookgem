@@ -19,6 +19,7 @@
     <div class="nav-links">
       <%= link_to "Log In", "#", class: "btn btn-secondary" %>
       <%= link_to "Sign Up", "#", class: "btn btn-primary" %>
+      <%= button_to "Log out", destroy_user_session_path, class: "dropdown-item", method: :delete %>
     </div>
   <% end %>
 </nav>
