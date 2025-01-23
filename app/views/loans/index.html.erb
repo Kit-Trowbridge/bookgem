@@ -1,6 +1,7 @@
 <h1>Loans</h1>
 <ul>
   <% @loans.each do |loan| %>
-    <li><%= loan.book.title %></li>
+    <li><%= loan.book.title %> | Due: <%= loan.end_date.strftime("%b %d, %Y") %></li>
+    <br>
   <% end %>
 </ul>
