@@ -1,5 +1,6 @@
-<div class="container">
-  <div class="form-container">
+
+<div class="new-book-page">
+  <div class="card p-3">
     <h1>List a New Book</h1>
 
     <% if @book.errors.any? %>
@@ -55,7 +56,8 @@
                        placeholder: "Describe the book's condition, edition, and unique features",
                        input_html: { rows: 4, class: 'form-control' } %>
       </div>
-
+    
+    
       <div class="form-group">
         <%= form.input :photo,
                        as: :file,
@@ -86,10 +88,12 @@
                        input_html: { rows: 3, class: 'form-control' } %>
       </div>
 
-      <div class="form-actions">
+<!--       <div class="form-actions">
         <%= form.button :submit, "Create Listing", class: "btn btn-primary" %>
         <%= link_to "Back to Books", books_path, class: "btn btn-secondary ml-2" %>
-      </div>
+      </div> -->
+        <%= form.button :submit, "List Book", class: "button-primary" %>
+        <%= link_to "Back to Books", books_path, class: "button-secondary" %>
     <% end %>
   </div>
 </div>
