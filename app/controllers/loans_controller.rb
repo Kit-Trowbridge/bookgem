@@ -7,6 +7,7 @@ class LoansController < ApplicationController
 
   def new
     @loan = Loan.new
+    @loan.end_date = Date.today + (@book.loan_duration || 2).weeks
   end
 
   def create
