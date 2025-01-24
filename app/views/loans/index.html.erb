@@ -1,16 +1,29 @@
-<div class="container">
-  <h1><%= current_user.name.capitalize %>'s Loans</h1>
+<div class="loans-container">
+  <div class="loans-header">
+    <h1>My Borrowed Books</h1>
+  </div>
 
   <% if @loans.empty? %>
-    <p><em>You don't have any books on loan currently :(</em></p>
+    <div class="empty-state">
+      <p>You don't have any books on loan currently</p>
+      <%= link_to "Browse Available Books", books_path, class: "btn btn-primary" %>
+    </div>
   <% else %>
-    <ul>
+    <div class="loans-grid">
       <% @loans.each do |loan| %>
-        <li><%= loan.book.title %> | Due: <%= loan.end_date.strftime("%b %d, %Y") %></li>
-        <br>
+        <div class="loan-card">
+          <% if loan.book.photo.present? %>
+            <div class="loan-book-photo">
+              <%= cl_image_tag(loan.book.photo.key, height: 120, width: 90, crop: :fill) %>
+            </div>
+          <% end %>
+          <div class="loan-info">
+            <h3><%= loan.book.title %></h3>
+            <p class="book-author"><%= loan.book.author %></p>
+            <p class="due-date">Due: <%= loan.end_date.strftime("%B %d, %Y") %></p>
+          </div>
+        </div>
       <% end %>
-    </ul>
+    </div>
   <% end %>
-
-  <%= link_to "Back to All Books", books_path, class: "btn btn-secondary mt-3" %>
 </div>

@@ -8,6 +8,10 @@
 // Import specific page styles
 @import "pages/new_book";
 
+@import "pages/dashboard";
+
+@import "pages/devise";
+
 
 // // General Variables
 // $primary-color: #2563eb;
@@ -734,4 +738,72 @@ button[type="delete"],
       color: $gray-900;
     }
   }
+}
+
+.loans-container {
+  max-width: 1000px;
+  margin: 2rem auto;
+  padding: 0 2rem;
+}
+
+.loans-header {
+  margin-bottom: 1.5rem;
+
+  h1 {
+    font-size: 2rem;
+    color: $gray-900;
+  }
+}
+
+.loan-card {
+  display: flex;
+  gap: 3rem;
+  background: white;
+  padding: 1.5rem 2rem;
+  border-radius: 0.75rem;
+  @include card-shadow;
+  width: 100%;
+
+  .loan-book-photo img {
+    width: 100px;
+    height: 140px;
+    object-fit: cover;
+    border-radius: 0.375rem;
+    @include card-shadow;
+  }
+
+  .loan-info {
+    flex: 1;
+
+    h3 {
+      font-size: 1.5rem;
+      color: $gray-900;
+      margin-bottom: 0.5rem;
+    }
+
+    .book-author {
+      font-size: 1.1rem;
+      color: $gray-700;
+      margin-bottom: 0.5rem;
+    }
+
+    .due-date {
+      color: $danger-color;
+      font-weight: 500;
+      font-size: 1.1rem;
+    }
+  }
+}
+
+.loans-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+
+.loans-grid {
+  gap: 2rem;
 }
