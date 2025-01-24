@@ -187,12 +187,16 @@ body {
     }
   }
 
+  .search-input, .search-select, .search-button {
+    height: 3rem;
+    font-size: 1rem;
+    border-radius: 0.5rem;
+  }
+
   .search-input {
     width: 95%;
     padding: 0.5rem;
-    font-size: 1rem;
     border: 1px solid $gray-200;
-    border-radius: 0.5rem;
 
     &:focus {
       outline: none;
@@ -202,10 +206,8 @@ body {
 
   .search-select {
     width: 100%;
-    padding: 1.75rem;
-    font-size: 1rem;
+    padding: 1.5rem;
     border: 1px solid $gray-200;
-    border-radius: 0.5rem;
 
     &:focus {
       outline: none;
@@ -214,11 +216,10 @@ body {
   }
 
   .search-button {
-    padding: 1.4rem 1.5rem;
+    padding: 0 1.5rem;
     background: $primary-color;
     color: white;
     border: none;
-    border-radius: 0.5rem;
     cursor: pointer;
     font-weight: 500;
 
@@ -227,6 +228,7 @@ body {
     }
   }
 }
+
 
 // Search Container for /
 .search-container {
