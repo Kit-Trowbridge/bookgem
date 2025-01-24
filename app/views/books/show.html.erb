@@ -1,16 +1,54 @@
-<h1><%= @book.title %></h1>
+<div class="book-details-container">
+  <div class="book-details-card">
+    <div class="book-details-grid">
+      <% if @book.photo.present? %>
+        <div class="book-photo">
+          <%= cl_image_tag(@book.photo.key,
+                           width: 400,
+                           height: 500,
+                           crop: :fill,
+                           class: "book-image") %>
+        </div>
+      <% end %>
 
-<div class="book-details">
-  <% if @book.photo.present? %>
-    <div class="book-photo">
-      <%= cl_image_tag(@book.photo.key, width: 400, height: 300, crop: :fill) %>
+      <div class="book-info-section">
+        <h1 class="book-title"><%= @book.title %></h1>
+
+        <div class="book-metadata">
+          <div class="metadata-item">
+            <span class="label">Author</span>
+            <span class="value"><%= @book.author %></span>
+          </div>
+
+          <div class="metadata-item">
+            <span class="label">Category</span>
+            <span class="value"><%= @book.category %></span>
+          </div>
+
+          <div class="metadata-item">
+            <span class="label">Security Deposit</span>
+            <span class="value">$<%= number_with_delimiter(@book.price) %></span>
+          </div>
+
+          <% if @book.description.present? %>
+            <div class="book-description">
+              <h2>Description</h2>
+              <p><%= @book.description %></p>
+            </div>
+          <% end %>
+        </div>
+
+        <div class="action-buttons">
+          <% if user_signed_in? %>
+            <%= link_to new_book_loan_path(@book), class: "btn btn-primary" do %>
+              <span>Borrow this Book</span>
+            <% end %>
+          <% end %>
+          <%= link_to books_path, class: "btn btn-secondary" do %>
+            <span>Back to Books</span>
+          <% end %>
+        </div>
+      </div>
     </div>
-  <% end %>
-  <p><strong>Author:</strong> <%= @book.author %></p>
-  <p><strong>Category:</strong> <%= @book.category %></p>
-  <p><strong>Deposit cost:</strong> $<%= @book.price %></p>
-  <!--Only want this to show if user is logged in-->
-  <%= link_to 'Borrow this book', new_book_loan_path(@book), class: "btn btn-secondary mt-3" %>
+  </div>
 </div>
-
-<%= link_to "Back to Books", books_path, class: "btn btn-secondary mt-3" %>
