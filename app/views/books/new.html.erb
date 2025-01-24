@@ -1,106 +1,106 @@
-<div class="new-book-page">
-  <div class="card p-3">
-    <h1>List a New Book</h1>
+  <div class="new-book-page">
+    <div class="card p-3">
+      <h1>List a New Book</h1>
 
-    <% if @book.errors.any? %>
-      <div class="alert alert-danger">
-        <h4>There were errors with your submission:</h4>
-        <ul>
-          <% @book.errors.full_messages.each do |message| %>
-            <li><%= message %></li>
-          <% end %>
-        </ul>
-      </div>
-    <% end %>
+      <% if @book.errors.any? %>
+        <div class="alert alert-danger">
+          <h4>There were errors with your submission:</h4>
+          <ul>
+            <% @book.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
 
-    <%= simple_form_for @book do |form| %>
-      <!-- Flex container for the two columns -->
-      <div class="form-columns">
-        <!-- Left column -->
-        <div class="left-column">
-          <div class="form-group">
-            <%= form.input :title,
-                           label: "Book Title",
-                           placeholder: "Enter the complete title",
-                           input_html: { class: 'form-control' } %>
+      <%= simple_form_for @book do |form| %>
+        <!-- Flex container for the two columns -->
+        <div class="form-columns">
+          <!-- Left column -->
+          <div class="left-column">
+            <div class="form-group">
+              <%= form.input :title,
+                            label: "Book Title",
+                            placeholder: "Enter the complete title",
+                            input_html: { class: 'form-control' } %>
+            </div>
+
+            <div class="form-group">
+              <%= form.input :author,
+                            label: "Author",
+                            placeholder: "Enter the book's author",
+                            input_html: { class: 'form-control' } %>
+            </div>
+
+            <div class="form-group">
+              <%= form.input :category,
+                            label: "Category",
+                            collection: [
+                              'Fiction',
+                              'Non-Fiction',
+                              'Rare Editions',
+                              'First Editions',
+                              'Signed Copies'
+                            ],
+                            include_blank: "Select Category",
+                            input_html: { class: 'form-control' } %>
+            </div>
+
+            <div class="form-group">
+              <%= form.input :price,
+                            label: "Security Deposit",
+                            placeholder: "Enter the security deposit amount",
+                            input_html: { class: 'form-control' } %>
+            </div>
+
+            <div class="form-group">
+              <%= form.input :description,
+                            label: "Book Description",
+                            placeholder: "Describe the book's condition, edition, and unique features",
+                            input_html: { rows: 4, class: 'form-control' } %>
+            </div>
           </div>
 
-          <div class="form-group">
-            <%= form.input :author,
-                           label: "Author",
-                           placeholder: "Enter the book's author",
-                           input_html: { class: 'form-control' } %>
-          </div>
+          <!-- Right column -->
+          <div class="right-column">
 
-          <div class="form-group">
-            <%= form.input :category,
-                           label: "Category",
-                           collection: [
-                             'Fiction',
-                             'Non-Fiction',
-                             'Rare Editions',
-                             'First Editions',
-                             'Signed Copies'
-                           ],
-                           include_blank: "Select Category",
-                           input_html: { class: 'form-control' } %>
-          </div>
+            <div class="form-group file-input">
+              <%= form.input :photo,
+                            as: :file,
+                            label: "Book Photos",
+                            input_html: { class: 'form-control-file' } %>
+            </div>
 
-          <div class="form-group">
-            <%= form.input :price,
-                           label: "Security Deposit",
-                           placeholder: "Enter the security deposit amount",
-                           input_html: { class: 'form-control' } %>
-          </div>
+            <div class="form-group">
+              <%= form.input :condition,
+                            label: "Condition",
+                            collection: ["Like New", "Very Good", "Good", "Fair"],
+                            include_blank: "Select Condition",
+                            input_html: { class: 'form-control' } %>
+            </div>
 
-          <div class="form-group">
-            <%= form.input :description,
-                           label: "Book Description",
-                           placeholder: "Describe the book's condition, edition, and unique features",
-                           input_html: { rows: 4, class: 'form-control' } %>
+            <div class="form-group">
+              <%= form.input :loan_duration,
+                            label: "Borrowing Duration",
+                            collection: [1, 2, 3, 4],
+                            include_blank: "Select Duration (weeks)",
+                            input_html: { class: 'form-control' } %>
+            </div>
+
+            <div class="form-group">
+              <%= form.input :additional_terms,
+                            label: "Additional Terms",
+                            placeholder: "Any specific requirements for borrowers",
+                            input_html: { rows: 3, class: 'form-control' } %>
+            </div>
           </div>
         </div>
 
-        <!-- Right column -->
-        <div class="right-column">
-
-          <div class="form-group file-input">
-            <%= form.input :photo,
-                           as: :file,
-                           label: "Book Photos",
-                           input_html: { class: 'form-control-file' } %>
-          </div>
-
-          <div class="form-group">
-            <%= form.input :condition,
-                           label: "Condition",
-                           collection: ["Like New", "Very Good", "Good", "Fair"],
-                           include_blank: "Select Condition",
-                           input_html: { class: 'form-control' } %>
-          </div>
-
-          <div class="form-group">
-            <%= form.input :loan_duration,
-                           label: "Borrowing Duration",
-                           collection: [1, 2, 3, 4],
-                           include_blank: "Select Duration (weeks)",
-                           input_html: { class: 'form-control' } %>
-          </div>
-
-          <div class="form-group">
-            <%= form.input :additional_terms,
-                           label: "Additional Terms",
-                           placeholder: "Any specific requirements for borrowers",
-                           input_html: { rows: 3, class: 'form-control' } %>
-          </div>
+        <!-- Buttons below the two columns -->
+        <div class="form-buttons">
+          <%= form.button :submit, "List Book", class: "button-primary" %>
+          <%= link_to "Back to Books", books_path, class: "button-secondary" %>
         </div>
-      </div>
-
-      <!-- Buttons below the two columns -->
-      <div class="form-buttons">
-        <%= form.button :submit, "List Book", class: "button-primary" %>
-        <%= link_to "Back to Books", books_path, class: "button-secondary" %>
-      </div>
-    <% end %>
+      <% end %>
+    </div>
   </div>
-</div>
