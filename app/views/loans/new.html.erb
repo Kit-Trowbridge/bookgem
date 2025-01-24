@@ -1,8 +1,70 @@
 <div class="container">
-  <%= simple_form_for [@book, @loan] do |f| %>
-    <!--Need to use datepickr -->
-    <%= f.input :start_date %>
-    <%= f.input :end_date %>
-    <%= f.submit 'Borrow', class: "button" %>
-  <% end %>
+  <div class="loan-form-container">
+    <div class="book-preview">
+      <% if @book.photo.present? %>
+        <div class="preview-photo">
+          <%= cl_image_tag(@book.photo.key, width: 150, height: 200, crop: :fill) %>
+        </div>
+      <% end %>
+
+      <div class="preview-info">
+        <h2><%= @book.title %></h2>
+        <div class="preview-metadata">
+          <div class="metadata-row">
+            <span class="label">Author:</span>
+            <span class="value"><%= @book.author %></span>
+          </div>
+          <div class="metadata-row">
+            <span class="label">Category:</span>
+            <span class="value"><%= @book.category %></span>
+          </div>
+          <div class="metadata-row">
+            <span class="label">Description:</span>
+            <span class="value"><%= @book.description %></span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="loan-terms">
+      <h3>Borrowing Terms</h3>
+      <% duration = @book.loan_duration || 2 %>
+      <p>Duration: <%= duration %> <%= duration == 1 ? 'week' : 'weeks' %></p>
+      <p>Security Deposit: $<%= @book.price %></p>
+      <p class="end-date-display">Return Date: <span id="returnDate"></span></p>
+    </div>
+
+    <%= simple_form_for [@book, @loan], html: { data: { turbo: false } } do |f| %>
+      <%= f.input :start_date,
+                  as: :date,
+                  html5: true,
+                  input_html: {
+                    min: Date.today,
+                    value: Date.today,
+                    id: 'startDate',
+                    onchange: 'updateEndDate()'
+                  } %>
+      <%= f.input :end_date, as: :hidden %>
+
+      <%= f.submit 'Confirm Borrowing', class: "btn btn-primary" %>
+      <%= link_to "Back to Book", book_path(@book), class: "btn btn-secondary" %>
+    <% end %>
+  </div>
 </div>
+
+<script>
+    function updateEndDate() {
+        const startDate = new Date(document.getElementById('startDate').value);
+        const loanDuration = <%= @book.loan_duration || 2 %>;
+        const endDate = new Date(startDate);
+        endDate.setDate(startDate.getDate() + (loanDuration * 7));
+
+        document.querySelector('input[name="loan[end_date]"]').value = endDate.toISOString().split('T')[0];
+        document.getElementById('returnDate').textContent = endDate.toLocaleDateString('en-US', {
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric'
+        });
+    }
+    document.addEventListener('DOMContentLoaded', updateEndDate);
+</script>
