@@ -1,12 +1,23 @@
 @import "bootstrap";
-// Import variables first
-@import "config/variables";
 
-// Import mixins second
+// Import variables
+@import "config/variables";
+// @import "config/colors";
 @import "config/mixins";
 
-// Import specific page styles
+// Import components
+// @import "components/base";
+// @import "components/buttons";
+// @import "components/layout";
+@import "components/navbar";
+@import "components/alert";
+
+// Import page-specific styles
+// @import "components/search";
+// @import "components/book_card";
+// @import "components/carousel";
 @import "pages/new_book";
+// @import "pages/books";
 
 @import "pages/dashboard";
 
@@ -65,14 +76,14 @@ body {
 
 .btn-primary {
   background: $primary-color;
-  color: white;
+  color: rgb(255, 255, 255);
   &:hover {
     background: darken($primary-color, 10%);
   }
 }
 
 .btn-secondary {
-  // background: white;
+  background: white;
   color: $primary-color;
   border: 1px solid $primary-color;
   margin-left: 1rem;
