@@ -1,0 +1,86 @@
+<div class="dashboard-container">
+  <div class="dashboard-header">
+    <h1>My Dashboard</h1>
+  </div>
+
+  <div class="dashboard-grid">
+    <div class="dashboard-card">
+      <div class="card-header">
+        <h2>Current Loans</h2>
+        <%= link_to "View All", loans_path, class: "btn btn-secondary" %>
+      </div>
+      <div class="card-content">
+        <% current_loans = current_user.loans.active %>
+        <% if current_loans.any? %>
+          <% current_loans.limit(3).each do |loan| %>
+            <div class="loan-item">
+              <div class="loan-details">
+                <h3><%= loan.book.title %></h3>
+                <p class="text-muted">Due: <%= loan.end_date.strftime("%B %d, %Y") %></p>
+              </div>
+              <span class="status-badge active">Active</span>
+            </div>
+          <% end %>
+        <% else %>
+          <p class="empty-state">No active loans</p>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="dashboard-card">
+      <div class="card-header">
+        <h2>My Listed Books</h2>
+        <%= link_to "List a Book", new_book_path, class: "btn btn-primary" %>
+      </div>
+      <div class="card-content">
+        <% if current_user.books.any? %>
+          <% current_user.books.limit(3).each do |book| %>
+            <div class="book-item">
+              <div class="book-details">
+                <h3><%= book.title %></h3>
+                <p class="text-muted">Listed: <%= book.created_at.strftime("%B %d, %Y") %></p>
+              </div>
+              <span class="status-badge <%= book.available? ? 'available' : 'borrowed' %>">
+               <%= book.available? ? 'Available' : 'Borrowed' %>
+             </span>
+            </div>
+          <% end %>
+        <% else %>
+          <p class="empty-state">No books listed yet</p>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="dashboard-card">
+      <div class="card-header">
+        <h2>Recent Activity</h2>
+      </div>
+      <div class="card-content">
+        <% recent_loans = current_user.loans.order(created_at: :desc).limit(5) %>
+        <% if recent_loans.any? %>
+          <div class="activity-feed">
+            <% recent_loans.each do |loan| %>
+              <div class="activity-item">
+                <div class="activity-details">
+                  <p>
+                    <strong><%= loan.book.title %></strong><br>
+                    <% if loan.end_date >= Date.today %>
+                      <span class="status-badge active">Active until <%= loan.end_date.strftime("%B %d") %></span>
+                    <% else %>
+                      <span class="status-badge returned">Returned on <%= loan.end_date.strftime("%B %d") %></span>
+                    <% end %>
+                  </p>
+                  <span class="activity-date">
+                   <%= time_ago_in_words(loan.created_at) %> ago
+                 </span>
+                </div>
+              </div>
+            <% end %>
+          </div>
+        <% else %>
+          <p class="empty-state">No activity yet</p>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
