@@ -1,5 +1,5 @@
-<div class="container">
-  <div class="card p-4">
+<div class="new-book-page">
+  <div class="card p-3">
     <h1>List a New Book</h1>
 
     <!-- Display the user's name above the form -->
@@ -27,10 +27,10 @@
 
         <%= form.input :photo, as: :file, label: "Photo" %>
 
-        <%= form.button :submit, "List Book", class: "btn btn-primary" %>
+        <%= form.button :submit, "List Book", class: "button-primary" %>
     <% end %>
 
 
-    <%= link_to "Back to Books", books_path, class: "btn btn-secondary" %>
+    <%= link_to "Back to Books", books_path, class: "button-secondary" %>
   </div>
 </div>

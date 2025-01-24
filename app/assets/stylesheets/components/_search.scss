@@ -1,0 +1,59 @@
+// .search-container {
+//   min-width: 1200px;
+//   margin: 0 auto 3rem;
+//   padding: 1.5rem 2rem;
+//   background: white;
+//   border-radius: 0.75rem;
+//   @include card-shadow;
+
+//   form {
+//     display: grid;
+//     grid-template-columns: 1fr auto auto;
+//     gap: 1rem;
+//     align-items: center;
+
+//     @media (max-width: 768px) {
+//       grid-template-columns: 1fr;
+//     }
+//   }
+
+//   .search-input {
+//     width: 95%;
+//     padding: 0.5rem;
+//     font-size: 1rem;
+//     border: 1px solid $gray-200;
+//     border-radius: 0.5rem;
+
+//     &:focus {
+//       outline: none;
+//       border-color: $primary-color;
+//     }
+//   }
+
+//   .search-select {
+//     width: 100%;
+//     padding: 1.75rem;
+//     font-size: 1rem;
+//     border: 1px solid $gray-200;
+//     border-radius: 0.5rem;
+
+//     &:focus {
+//       outline: none;
+//       border-color: $primary-color;
+//     }
+//   }
+
+//   .search-button {
+//     padding: 1.4rem 1.5rem;
+//     background: $primary-color;
+//     color: white;
+//     border: none;
+//     border-radius: 0.5rem;
+//     cursor: pointer;
+//     font-weight: 500;
+
+//     &:hover {
+//       background: darken($primary-color, 10%);
+//     }
+//   }
+// }

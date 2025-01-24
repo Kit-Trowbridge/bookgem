@@ -4,8 +4,8 @@
   justify-content: center;
   align-items: center;
   min-height: calc(100vh - 70px); // Account for navbar
-  background: #f7f9fc; // Soft light background
-  padding: 20px;
+  background: #d5d5d5; // Soft light background
+  padding: 10px;
 
   .card {
     background: #ffffff; // White card
@@ -17,8 +17,8 @@
     width: 100%;
 
     &:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+      // transform: translateY(-5px);
+      box-shadow: 0 0px 16px rgba(78, 179, 237, 0.603);
     }
 
     h1 {
@@ -70,7 +70,7 @@
       }
     }
 
-    .btn-primary {
+    .button-primary {
       background-color: #2563eb; // Primary color
       color: #ffffff;
       padding: 12px;
@@ -88,7 +88,7 @@
       }
     }
 
-    .btn-secondary {
+    .button-secondary {
       background-color: transparent;
       color: #2563eb;
       border: 2px solid #2563eb;

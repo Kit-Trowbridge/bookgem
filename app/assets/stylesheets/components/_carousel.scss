@@ -1,0 +1,74 @@
+// .carousel-container {
+//   max-width: 1200px;
+//   margin: 0 auto;
+//   position: relative;
+//   padding: 0 3rem;
+
+//   .carousel-buttons {
+//     position: absolute;
+//     top: 50%;
+//     transform: translateY(-50%);
+//     width: calc(100% + 2rem);
+//     left: -1rem;
+//     pointer-events: none;
+//     z-index: 2;
+//     visibility: hidden; // Hide carousel buttons for now
+
+//     button {
+//       position: absolute;
+//       background: $primary-color;
+//       color: white;
+//       border: none;
+//       border-radius: 50%;
+//       width: 40px;
+//       height: 40px;
+//       cursor: pointer;
+//       pointer-events: auto;
+//       font-size: 1.5rem;
+//       line-height: 1;
+//       display: flex;
+//       align-items: center;
+//       justify-content: center;
+
+//       &:hover {
+//         background: darken($primary-color, 10%);
+//       }
+
+//       &.prev {
+//         left: 0;
+//       }
+//       &.next {
+//         right: 0;
+//       }
+//     }
+//   }
+// }
+
+// .books-carousel {
+//   display: flex;
+//   gap: 1.5rem;
+//   overflow-x: hidden;
+//   scroll-behavior: smooth;
+//   padding: 1rem 0;
+
+//   .book-card {
+//     width: calc((100% - 4.5rem) / 4);
+//     flex: 0 0 calc((100% - 4.5rem) / 4);
+//     margin-right: 0;
+
+//     @media (max-width: 1200px) {
+//       width: calc((100% - 3rem) / 3);
+//       flex: 0 0 calc((100% - 3rem) / 3);
+//     }
+
+//     @media (max-width: 768px) {
+//       width: calc((100% - 1.5rem) / 2);
+//       flex: 0 0 calc((100% - 1.5rem) / 2);
+//     }
+
+//     @media (max-width: 480px) {
+//       width: 100%;
+//       flex: 0 0 100%;
+//     }
+//   }
+// }
