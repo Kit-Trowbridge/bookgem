@@ -1,9 +1,15 @@
 <h1><%= @book.title %></h1>
 
 <div class="book-details">
+  <% if @book.photo.present? %>
+    <div class="book-photo">
+      <%= cl_image_tag(@book.photo.key, width: 400, height: 300, crop: :fill) %>
+    </div>
+  <% end %>
   <p><strong>Author:</strong> <%= @book.author %></p>
   <p><strong>Category:</strong> <%= @book.category %></p>
   <p><strong>Deposit cost:</strong> $<%= @book.price %></p>
+  <!--Only want this to show if user is logged in-->
   <%= link_to 'Borrow this book', new_book_loan_path(@book), class: "btn btn-secondary mt-3" %>
 </div>
 

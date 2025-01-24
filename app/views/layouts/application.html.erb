@@ -17,18 +17,17 @@
   </a>
   <% if controller_name == 'pages' && action_name == 'home' %>
     <div class="nav-links">
-      <%= link_to "Log In", "#", class: "btn btn-secondary" %>
-      <%= link_to "Sign Up", "#", class: "btn btn-primary" %>
+      <%= link_to "Log In", new_user_session_path, class: "btn btn-secondary" %>
+      <%= link_to "Sign Up", new_user_registration_path, class: "btn btn-primary" %>
+      <%= button_to "Log out", destroy_user_session_path, class: "btn btn-secondary", method: :delete %>
     </div>
   <% end %>
 </nav>
-<!-- devise elements, leave out for now
-<p class="notice"><%= notice %></p>
-<p class="alert"><%= alert %></p>
--->
-<div class="container">
-  <%= yield %>
-</div>
+
+
+<%= render "shared/flashes" %>
+<%= yield %>
+
 
 </body>
 </html>

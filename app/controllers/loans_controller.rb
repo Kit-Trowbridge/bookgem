@@ -1,17 +1,18 @@
 class LoansController < ApplicationController
+  before_action :set_book, only: [:new, :create]
+
   def index
-    @loans = Loan.all
+    @loans = current_user.loans.sort_by { |loan| loan.end_date }
   end
 
   def new
     @loan = Loan.new
-    @book = Book.find(params[:book_id])
   end
 
   def create
-    @book = Book.find(params[:book_id])
     @loan = Loan.new(loan_params)
     @loan.book = @book
+    @loan.user = current_user
     if @loan.save
       redirect_to loans_path
     else
@@ -21,8 +22,11 @@ class LoansController < ApplicationController
 
   private
 
-  # how do I make it so that the user is automatic (signed in - shouldn't be something to select)
+  def set_book
+    @book = Book.find(params[:book_id])
+  end
+
   def loan_params
-    params.require(:loan).permit(:start_date, :end_date, :user_id)
+    params.require(:loan).permit(:start_date, :end_date)
   end
 end

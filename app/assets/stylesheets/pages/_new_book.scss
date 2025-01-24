@@ -1,0 +1,117 @@
+// Styling specific to /books/new page
+.new-book-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: calc(100vh - 70px); // Account for navbar
+  background: #f7f9fc; // Soft light background
+  padding: 20px;
+
+  .card {
+    background: #ffffff; // White card
+    border-radius: 12px; // Rounded corners
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); // Subtle shadow
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    padding: 30px;
+    max-width: 500px;
+    width: 100%;
+
+    &:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 28px;
+      margin-bottom: 20px;
+      color: #2563eb; // Primary color
+    }
+
+    user-info {
+      text-align: center;
+      font-size: 14px;
+      color: #4b5563; // Gray text
+      margin-bottom: 20px;
+      font-weight: bold;
+
+      strong {
+        color: #2563eb; // Primary color for user name
+      }
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+
+      label {
+        display: block;
+        font-size: 14px;
+        font-weight: bold;
+        color: #4b5563; // Gray text
+        margin-bottom: 8px;
+      }
+
+      input,
+      select {
+        width: 100%;
+        padding: 12px;
+        font-size: 16px;
+        border: 1px solid #e5e7eb; // Light gray border
+        border-radius: 8px;
+        background: #f9fafb; // Light input background
+        color: #374151; // Dark gray text
+        transition: border-color 0.3s ease;
+
+        &:focus {
+          outline: none;
+          border-color: #2563eb; // Primary color on focus
+          background: #ffffff; // White background
+        }
+      }
+    }
+
+    .btn-primary {
+      background-color: #2563eb; // Primary color
+      color: #ffffff;
+      padding: 12px;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: bold;
+      border: none;
+      cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.3s ease;
+      width: 100%;
+
+      &:hover {
+        background-color: darken(#2563eb, 10%);
+        transform: translateY(-3px);
+      }
+    }
+
+    .btn-secondary {
+      background-color: transparent;
+      color: #2563eb;
+      border: 2px solid #2563eb;
+      padding: 10px;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: bold;
+      text-align: center;
+      display: inline-block;
+      margin-top: 10px;
+      width: 100%;
+      transition: background-color 0.3s ease, color 0.3s ease;
+
+      &:hover {
+        background-color: #2563eb;
+        color: #ffffff;
+      }
+    }
+  }
+
+  @media (max-width: 768px) {
+    .card {
+      padding: 20px;
+    }
+  }
+}
